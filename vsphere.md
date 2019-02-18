@@ -21,6 +21,7 @@
 ## vSphere Configuration
 ### Creating and assign roles to the vSphere Cloud Provider user and vSphere entities
 - Enable UUID AttributeMinimal set of vSphere roles/privileges required for static only persistent volume provisioning
+  
   |Roles|Privileges|Entities|Propagate to Children|
   |-----|:---------|:----------|:-----------:|
   |manage-k8s-node-vms|VirtualMachine.Config.AddExistingDisk,<br>VirtualMachine.Config.AddNewDisk,<br>VirtualMachine.Config.AddRemoveDevice,<br>VirtualMachine.Config.RemoveDisk|VM Folder|	  Yes|
@@ -29,6 +30,7 @@
 
 
 - Minimal set of vSphere roles/privileges required for dynamic persistent volume provisioning with storage policy based volume placement
+  
   |Roles|Privileges|Entities|Propagate to Children|
   |-----|:---------|:----------|:-----------:|
   |manage-k8s-node-vms|Resource.AssignVMToPool,<br>VirtualMachine.Config.AddExistingDisk, <br>VirtualMachine.Config.AddNewDisk,<br> VirtualMachine.Config.AddRemoveDevice,<br> VirtualMachine.Config.RemoveDisk,<br> VirtualMachine.Inventory.Create,<br> VirtualMachine.Inventory.Delete|Cluster, Hosts,<br>VM Folder|Yes|
@@ -56,18 +58,18 @@
 
 
 ### Enable disk.EnableUUID via vSphere Web UI 
-1. Open the Host Client, and log in to the ESXi
-2. Locate the virtual machine for which you are enabling the disk UUID attribute, and power off the virtual machine.
-3. After power-off, right-click the virtual machine, and choose Edit Settings.
-4. Click VM Options tab, and select Advanced -> General.
-5. Click Edit Configuration in Configuration Parameters.
-6. Click Add parameter.
-7. In the Key column, type disk.EnableUUID.
-8. In the Value column, type TRUE.
-9. Projects Information > Kubernets: Deploying vsphere cloud-provider on existing > image2019-2-11 10:27:0.png
-10. Click OK and click Save.
-11. Power on the virtual machine
-12. Enable disk.EnableUUID via linux/windows cli govc command
+    1. Open the Host Client, and log in to the ESXi
+    2. Locate the virtual machine for which you are enabling the disk UUID attribute, and power off the virtual machine.
+    3. After power-off, right-click the virtual machine, and choose Edit Settings.
+    4. Click VM Options tab, and select Advanced -> General.
+    5. Click Edit Configuration in Configuration Parameters.
+    6. Click Add parameter.
+    7. In the Key column, type disk.EnableUUID.
+    8. In the Value column, type TRUE.
+    9. Projects Information > Kubernets: Deploying vsphere cloud-provider on existing > image2019-2-11 10:27:0.png
+    10. Click OK and click Save.
+    11. Power on the virtual machine
+    12. Enable disk.EnableUUID via linux/windows cli govc command
 
 
 ### govc is a vSphere CLI built on top of govmomi.
@@ -296,8 +298,9 @@
         ```
 
 # Troubleshooting Configuration 
-### Unable to find VM by UUID
-- issue when adding new or freah cluster and nodes with cloud-provider=vsphere tailing kubectl logs we will see such error
+### Issue : Unable to find VM by UUID
+- When setting up new/existance cluster or nodes and adding flag **cloud-provider=vsphere** and we see in kubectl logs Error: **Unable to find VM by UUID. VM UUID:** 
+  like in the example 
     ```bash
     I0207 09:24:23.681213       1 disruption.go:288] Starting disruption controller
     I0207 09:24:23.681223       1 controller_utils.go:1025] Waiting for caches to sync for disruption controller
