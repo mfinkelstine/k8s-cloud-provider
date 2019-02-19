@@ -141,10 +141,14 @@ TOC
      govc vm.change -e="disk.enableUUID=1" -vm="$vm_name" 
    done
    ```
+- Checking permission with govc
+  - Create vmdk on specific DS
+    ```bash
+    govc datastore.disk.create -ds /<DATASTORE_NAME> -size 2G k8s/myDisk.vmdk
+    ```
 
 ### Moving all vm's k8s nodes to a default folder in vCenter
 > All node VMs must be placed in vSphere VM folder to Create a VM folder following the instructions bellow
-
 
 - Creating VC directory and moving vm's 
   - **vCenter Web UI** : In vCenter go to the “VMs and Templates” view - right click the top level and then create a “New  Folder”  write k8s, the drag the hosts to the directory that you have created.
