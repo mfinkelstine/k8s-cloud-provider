@@ -1,6 +1,8 @@
 # Kubernetes Cloud Provider with vSphere configuration
 
-- [vSphere Configuration](#vSphere-Configuration)
+TOC
+
+* [vSphere Configuration](#vSphere-Configuration)
   - [Creating and assign roles to the vSphere Cloud Provider user and vSphere entities](#Creating-and-assign-roles-to-the-vSphere-Cloud-Provider-user-and-vSphere-entities)
   - Enable UUID Attribute on all k8s VM's
     - Enable disk.EnableUUID via vSphere Web UI 
