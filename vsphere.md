@@ -4,7 +4,7 @@ TOC
 
 * [vSphere Configuration](#vSphere-Configuration)
   - [Creating and assign roles to the vSphere Cloud Provider user and vSphere entities](#Creating-and-assign-roles-to-the-vSphere-Cloud-Provider-user-and-vSphere-entities)
-  - [Enable UUID Attribute on all k8s VM's](#Enable-UUID-Attribute-on-all-k8s-VM's)
+  - [Enable UUID Attribute on all k8s VMs](#Enable-UUID-Attribute-on-all-k8s-VMs)
     - Enable disk.EnableUUID via vSphere Web UI 
     - Enable disk.EnableUUID via linux/windows cli govc command
   - Moving all vm's k8s nodes to a default folder in vCenter
@@ -52,7 +52,7 @@ TOC
   |Read-only (pre-existing default role)|	System.Anonymous,<br> System.Read,<br> System.View	vCenter,<br>Datacenter,<br>Datastore Cluster,<br>Datastore |Storage Folder	|No|
 
 
-## Enable UUID Attribute on all k8s VM's
+## Enable UUID Attribute on all k8s VMs
 
 >The disk UUID on the node VMs must be enabled: the disk.EnableUUID value must be set to True.<br>
 >This step is necessary so that the VMDK always presents a consistent UUID to the VM, thus allowing the disk to be mounted properly. For each of the virtual machine nodes that will be participating in the cluster, follow the steps below using Web UI or govc Command to enabled disk.EnableUUID 
